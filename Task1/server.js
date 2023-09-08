@@ -7,7 +7,7 @@ app.get('/api', (req, res) => {
     const track = req.query.track;
 
     const currentDate = new Date().toLocaleDateString(undefined, { weekday: 'long' });
-    const utcTime = new Date().toISOString();
+    const utcTime = new Date().toJSON().split(".")[0] + "Z";
 
     const jsonResponse = {
         slack_name: slackName,
@@ -18,7 +18,7 @@ app.get('/api', (req, res) => {
         github_repo_url: "https://github.com/Bakarray/HNGx",
         status_code: 200,
     };
-
+    
     res.json(jsonResponse);
 })
 
