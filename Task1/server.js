@@ -14,7 +14,7 @@ app.get('/api', (req, res) => {
     const utcTime = new Date().toISOString();
 
     const jsonResponse = {
-        slack_name: Poesitor,
+        slack_name: slackName,
         current_day: currentDate,
         utc_time: utcTime,
         track: "backend",
