@@ -2,15 +2,11 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-})
-
 app.get('/api', (req, res) => {
     const slackName = req.query.slack_name;
     const track = req.query.track;
 
-    const currentDate = new Date().toDateString();
+    const currentDate = new Date().toLocaleDateString(undefined, { weekday: 'long' });
     const utcTime = new Date().toISOString();
 
     const jsonResponse = {
@@ -26,3 +22,6 @@ app.get('/api', (req, res) => {
     res.json(jsonResponse);
 })
 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+})
